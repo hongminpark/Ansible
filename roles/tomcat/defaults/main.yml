@@ -1,2 +1,9 @@
 ---
 # defaults file for tomcat85
+{ "tomcat": {
+    "version": "apache-tomcat-8.5.43",
+    "home": "/was/apache-tomcat-8.5.43",
+    "log_home": "/logfs/apache-tomcat-8.5.43"
+  }
+}
+

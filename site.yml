@@ -4,3 +4,4 @@
   become: True
   roles:
     - common
+    - tomcat

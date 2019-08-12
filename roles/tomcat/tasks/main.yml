@@ -11,8 +11,17 @@
 # - Undo installation
 #
 - name: Extract Tomcat archive
-- name: Configure Tomcat server.xml
+  unarchive:
+    src: apache-tomcat-8.5.43.tar.gz
+    dest: "{{ tomcat.home }}"
 - name: Configure Tomcat .bash_profile
-- name: Make test application
-- name: Configure permissions
-- name: Start Tomcat
+  file:
+    src: .bash_profile.j2
+    dest: "{{ tomcat.home }}/.bash_profile" 
+- name: Configure Tomcat server.xml
+  template:
+    src: server.xml.j2
+    dest: "{{ tomcat.con1.home }}/conf/server.xml"
+#- name: Make test application
+#- name: Configure permissions
+#- name: Start Tomcat

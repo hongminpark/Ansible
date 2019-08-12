@@ -1,2 +1,31 @@
 ---
 # vars file for tomcat85
+{ "tomcat": {
+    "con1": {
+      "name": "Catalina1",
+      "defaulthost": "localhost",
+      "jvmRoute": "tomcat1",
+      "appBase": "/wasapp", # Could be input
+      "docBase": "/test", # Could be input
+      "contextPath": "", # Could be input
+      "home": "{{ tomcat.home }}/con1",
+      "log_home": "{{ tomcat.log_home }}/con1",
+      "port": 8088,
+      "min_threads": 20,
+      "max_threads": 200
+    },
+    "con2": {
+      "name": "Catalina1",
+      "defaulthost": "localhost",
+      "jvmRoute": "tomcat1",
+      "appBase": "/wasapp", # Could be input
+      "docBase": "/test", # Could be input
+      "contextPath": "", # Could be input
+      "home": "{{ tomcat.home }}/con2",
+      "log_home": "{{ tomcat.log_home }}/con2",
+      "port": 8088,
+      "min_threads": 20,
+      "max_threads": 200
+    },
+  }
+}
