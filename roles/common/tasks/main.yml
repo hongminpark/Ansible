@@ -1,0 +1,9 @@
+---
+# tasks file for common
+- name: Make users and groups
+  import_tasks: user.yml
+- name: Make filesystem
+  import_tasks: filesystem.yml
+#- name: Install required packages(wget, openjdk, else...)
+#  import_tasks: java.yml
+

@@ -1,0 +1,29 @@
+---
+- name: Create wasadm group
+  group:
+    name: wasadm
+    gid: 400
+    state: present
+- name: Create tomcat admin account
+  user:
+    name: "{{ tomcat_admin_username }}"
+    password: "{{ tomcat_admin_password }}"
+    uid: 401
+    group: wasadm
+    home: /was
+    shell: /bin/bash
+    expires: 91
+    update_password: on_create
+- name: Create individual account
+  user:
+    name: "E{{ item.username }}"
+    password: "{{ item.userpassword }}"
+    comment: "{{ item.usercomment }}"
+    uid: "{{ item.username }}"
+    #group: usrgrp
+    #groups: usrgrp, sugrp
+    shell: /bin/bash
+    expires: 91
+    update_password: on_create
+  loop:
+    "{{ individual_users }}"

@@ -1,0 +1,18 @@
+---
+# tasks file for tomcat85
+# - filesystem
+# - users(individuals, group, tomcat)
+# - install java
+# - unarchive tomcat from files
+# - configure tomcat(server.xml, catalina ... )
+# - configure bashes
+# - make test app
+# - start tomcat
+# - Undo installation
+#
+- name: Extract Tomcat archive
+- name: Configure Tomcat server.xml
+- name: Configure Tomcat .bash_profile
+- name: Make test application
+- name: Configure permissions
+- name: Start Tomcat

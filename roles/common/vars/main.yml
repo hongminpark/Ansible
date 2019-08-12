@@ -1,0 +1,24 @@
+---
+# vars file for common
+was_filesystem:
+  - /was
+  - /wasapp
+  - /wasdump
+  - /logfs
+
+tomcat_admin_username: tomcat
+tomcat_admin_password: tomcat
+
+individual_users:
+  - username: 550084
+    userpassword: P!ssw0rd
+    usercomment: Lee Seung Hoon
+  - username: 600082
+    userpassword: P!ssw0rd
+    usercomment: Hwang Sung Soon
+  - username: 678016
+    userpassword: P!ssw0rd
+    usercomment: Park Hong min 
+  - username: 679006
+    userpassword: P!ssw0rd
+    usercomment: Kang Dae Hyeok
