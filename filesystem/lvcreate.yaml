@@ -1,0 +1,38 @@
+---
+- hosts: tomcats
+  name: Set filesystems for tomcat. 
+  become: true
+  tasks:
+    - name: Install the latest version of packages
+      yum:
+        name: lvm* 
+        state: installed
+    - name: Create a volume group on top of /dev/vda with physical extent size 16
+      lvg:
+        vg: wasvg 
+        pvs: /dev/sda
+        pesize: 16
+    - name: Create a logical volume of engine
+      lvol:
+        vg: wasvg
+        lv: was
+        size: 4G
+    - name: Create a logical volume of application files
+      lvol:
+        vg: wasvg
+        lv: wasapp 
+        size: 10G 
+    - name: Create a logical volume of logs
+      lvol:
+        vg: wasvg
+        lv: logfs 
+        size: 10G 
+    - name: Create a logical volume of engine's dump files
+      lvol:
+        vg: wasvg
+        lv: wasdump
+        size: 6G 
+#    - name: Create a ext4 filesystem on /dev
+#      filesystem:
+#        fstype: ext2
+#        dev: /dev/sda1
