@@ -1,7 +1,7 @@
 ---
 - name: Create wasadm group
   group:
-    name: wasadm
+    name: "{{ tomcat_admin_group }}"
     gid: 400
     state: present
 - name: Create tomcat admin account
@@ -9,7 +9,7 @@
     name: "{{ tomcat_admin_username }}"
     password: "{{ tomcat_admin_password }}" # Todo: password should be hashed
     uid: 401
-    group: wasadm
+    group: "{{ tomcat_admin_group }}"
     home: /was
     shell: /bin/bash
     expires: 91

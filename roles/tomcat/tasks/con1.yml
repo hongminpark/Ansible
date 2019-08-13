@@ -10,6 +10,7 @@
   with_items:
     - "{{ tomcat.con1.home }}" # Todo: Must get container numbers dynamically 
     - "{{ tomcat.con1.log_home }}"
+    - "{{ tomcat.con1.appBase }}{{ tomcat.con1.docBase }}"
 - name: Extract Tomcat archive
   unarchive:
     src: "{{ tomcat_version }}.tar.gz"
@@ -23,4 +24,3 @@
   template:
     src: logging.properties.j2
     dest: "{{ tomcat.con1.home }}/conf/logging.properties"
-

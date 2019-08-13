@@ -8,6 +8,10 @@
   package:
     name: "{{ java_version }}"
     state: present
+- name: Configure Tomcat admin .bash_profile
+  template:
+    src: .bash_profile.j2
+    dest: "{{ tomcat_install_home }}/.bash_profile"
 - name: Setup Tomcat home
   file:
     path: "{{ tomcat_home }}"
@@ -15,10 +19,6 @@
     mode: 0750
     owner: "{{ tomcat_admin_username }}"
     group: "{{ tomcat_admin_group }}"
-- name: Configure Tomcat .bash_profile
-  template:
-    src: .bash_profile.j2
-    dest: "{{ tomcat_home }}/.bash_profile"
 - name: Setup Tomcat Container1
   import_tasks: con1.yml
 - name: Setup Tomcat Container2
