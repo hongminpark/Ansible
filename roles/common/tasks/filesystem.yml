@@ -5,5 +5,5 @@
     state: directory
     mode: 0750
     owner: "{{ tomcat_admin_username }}"
-    group: wasadm
-  loop: "{{ was_filesystem }}"
+    group: "{{ tomcat_admin_group }}"
+  with_items: "{{ was_filesystem }}"

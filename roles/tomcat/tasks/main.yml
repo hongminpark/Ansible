@@ -1,27 +1,29 @@
 ---
 # tasks file for tomcat85
-# - filesystem
-# - users(individuals, group, tomcat)
-# - install java
-# - unarchive tomcat from files
-# - configure tomcat(server.xml, catalina ... )
-# - configure bashes
 # - make test app
 # - start tomcat
 # - Undo installation
 #
-- name: Extract Tomcat archive
-  unarchive:
-    src: apache-tomcat-8.5.43.tar.gz
-    dest: "{{ tomcat.home }}"
-- name: Configure Tomcat .bash_profile
+- name: Ensure given version of Openjdk is installed
+  package:
+    name: "{{ java_version }}"
+    state: present
+- name: Setup Tomcat home
   file:
-    src: .bash_profile.j2
-    dest: "{{ tomcat.home }}/.bash_profile" 
-- name: Configure Tomcat server.xml
+    path: "{{ tomcat_home }}"
+    state: directory
+    mode: 0750
+    owner: "{{ tomcat_admin_username }}"
+    group: "{{ tomcat_admin_group }}"
+- name: Configure Tomcat .bash_profile
   template:
-    src: server.xml.j2
-    dest: "{{ tomcat.con1.home }}/conf/server.xml"
+    src: .bash_profile.j2
+    dest: "{{ tomcat_home }}/.bash_profile"
+- name: Setup Tomcat Container1
+  import_tasks: con1.yml
+- name: Setup Tomcat Container2
+  import_tasks: con2.yml
+#- name: Setup Tomcat Cluster
 #- name: Make test application
 #- name: Configure permissions
 #- name: Start Tomcat

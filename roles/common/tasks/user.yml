@@ -7,7 +7,7 @@
 - name: Create tomcat admin account
   user:
     name: "{{ tomcat_admin_username }}"
-    password: "{{ tomcat_admin_password }}"
+    password: "{{ tomcat_admin_password }}" # Todo: password should be hashed
     uid: 401
     group: wasadm
     home: /was

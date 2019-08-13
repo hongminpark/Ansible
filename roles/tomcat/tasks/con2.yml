@@ -1,0 +1,26 @@
+---
+# Setup Tomcat Container2
+- name: Setup directories for Container2
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0750
+    owner: "{{ tomcat_admin_username }}"
+    group: "{{ tomcat_admin_group }}"
+  with_items:
+    - "{{ tomcat.con2.home }}" # Todo: Must get container numbers dynamically 
+    - "{{ tomcat.con2.log_home }}"
+- name: Extract Tomcat archive
+  unarchive:
+    src: "{{ tomcat_version }}.tar.gz"
+    dest: "{{ tomcat.con2.home }}"
+    extra_opts: [--strip-components=1] # Todo: Seems awkward  
+- name: Configure Tomcat server.xml
+  template:
+    src: server.xml.j2
+    dest: "{{ tomcat.con2.home }}/conf/server.xml"
+- name: Configure Tomat log.properties
+  template:
+    src: logging.properties.j2
+    dest: "{{ tomcat.con2.home }}/conf/logging.properties"
+

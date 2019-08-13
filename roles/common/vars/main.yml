@@ -7,6 +7,7 @@ was_filesystem:
   - /logfs
 
 tomcat_admin_username: tomcat
+tomcat_admin_group: wasadm
 tomcat_admin_password: tomcat
 
 individual_users:
