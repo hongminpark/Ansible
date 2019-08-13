@@ -24,4 +24,4 @@
   template:
     src: logging.properties.j2
     dest: "{{ tomcat.con2.home }}/conf/logging.properties"
-
+#- name: Start Tomcat Container2

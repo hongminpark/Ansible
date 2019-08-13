@@ -22,6 +22,6 @@ tomcat:
     contextPath:      # Could be input
     home: "{{ tomcat_home }}/con2"
     log_home: "{{ tomcat_log_home }}/con2"
-    port: 8088
+    port: 8089
     min_threads: 20
     max_threads: 200
