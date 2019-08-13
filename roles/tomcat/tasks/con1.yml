@@ -24,4 +24,19 @@
   template:
     src: logging.properties.j2
     dest: "{{ tomcat.con1.home }}/conf/logging.properties"
-#- name: Start Tomcat Container1
+- name: Change permessions of directories
+  command: find "{{ tomcat.con1.home }}" -type d -exec chmod 0750 {} \;
+- name: Change permessions of files
+  command: find "{{ tomcat.con1.home }}" -type f -exec chmod 0640 {} \;
+- name: Change permessions of files
+  command: find "{{ tomcat.con1.home }}/bin" -type f -exec chmod 0750 {} \;
+- name: Change owner of files
+  file:
+    path: "{{ tomcat.con1.home }}"
+    owner: "{{ tomcat_admin_username }}"
+    group: "{{ tomcat_admin_group }}"
+    recurse: true
+- name: Start Tomcat Container1
+  command: "{{ tomcat.con1.home }}/bin/startup.sh"
+  become: true
+  become_user: "{{ tomcat_admin_username }}"  

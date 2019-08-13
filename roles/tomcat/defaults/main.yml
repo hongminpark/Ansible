@@ -6,5 +6,5 @@ tomcat_install_home: /was
 tomcat_version: apache-tomcat-8.5.43
 tomcat_home: "{{ tomcat_install_home }}/{{ tomcat_version }}"
 tomcat_log_home: "/logfs{{ tomcat_home }}"
-java_version: java-1.7.0-openjdk
+java_version: java-1.7.0-openjdk-devel
 java_home: /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.231-2.6.19.1.el7_6.x86_64 # Todo: get the path dynamically

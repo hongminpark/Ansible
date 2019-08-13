@@ -5,14 +5,17 @@
 # - Undo installation
 #
 - name: Ensure given version of Openjdk is installed
+  become: true
   package:
     name: "{{ java_version }}"
     state: present
 - name: Configure Tomcat admin .bash_profile
+  become: true
   template:
     src: .bash_profile.j2
     dest: "{{ tomcat_install_home }}/.bash_profile"
 - name: Setup Tomcat home
+  become: true
   file:
     path: "{{ tomcat_home }}"
     state: directory
@@ -20,8 +23,10 @@
     owner: "{{ tomcat_admin_username }}"
     group: "{{ tomcat_admin_group }}"
 - name: Setup Tomcat Container1
+  become: true
   import_tasks: con1.yml
 - name: Setup Tomcat Container2
+  become: true
   import_tasks: con2.yml
 #- name: Setup Tomcat Cluster
 #- name: Make test application
